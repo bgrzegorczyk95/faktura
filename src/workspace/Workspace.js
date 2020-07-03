@@ -82,13 +82,13 @@ export function Workspace() {
   const addRow = () => {
     const row = {
       name: '',
-      weight: 0,
-      brutto: 0,
+      weight: '',
+      brutto: '',
       vatPrice: 1.05,
       vatAmount: 0,
       nettoPrice: 0,
       nettoAmount: 0,
-      bruttoAmount: 0,
+      bruttoAmount: '',
     }
     setTableRows([...tableRows, row]);
     localStorage.setItem('tableRows', JSON.stringify([...tableRows, row]));
@@ -164,13 +164,13 @@ export function Workspace() {
           {tableRows.map((row, index) => (
             <tr key={index}>
               <TableData color={row.vatPrice}>
-                <input autoComplete="off" type="text" name="name" value={row.name} onChange={(e) => handleChange(e, index)} /> 
+                <input placeholder="wpisz nazwe" autoComplete="off" type="text" name="name" value={row.name} onChange={(e) => handleChange(e, index)} /> 
               </TableData>
               <TableData color={row.vatPrice}>
-                <input autoComplete="off" type="number" name="weight" value={row.weight} onChange={(e) => handleChange(e, index)} /> 
+                <input placeholder="wpisz wage" autoComplete="off" type="number" name="weight" value={row.weight} onChange={(e) => handleChange(e, index)} /> 
               </TableData>
               <TableData color={row.vatPrice}>
-              <input autoComplete="off" type="number" name="brutto" value={row.brutto} onChange={(e) => handleChange(e, index)} /> 
+              <input placeholder="wpisz cene brutto" autoComplete="off" type="number" name="brutto" value={row.brutto} onChange={(e) => handleChange(e, index)} /> 
               </TableData>
               <TableData color={row.vatPrice}>
                 <Select name="vatPrice" value={row.vatPrice} onChange={(e) => handleChange(e, index)}>
@@ -183,7 +183,7 @@ export function Workspace() {
               <TableData color={row.vatPrice}>{row.nettoPrice}</TableData>
               <TableData color={row.vatPrice}>{row.nettoAmount}</TableData>
               <TableData color={row.vatPrice}>
-                <input autoComplete="off" type="text" name="bruttoAmount" value={row.bruttoAmount} onChange={(e) => handleChange(e, index)} /> 
+                <input placeholder="wpisz wartość brutto" autoComplete="off" type="text" name="bruttoAmount" value={row.bruttoAmount} onChange={(e) => handleChange(e, index)} /> 
               </TableData>
               <TableData color={row.vatPrice}>
                 <DeleteRowButton type="button" onClick={() => deleteRow(index)}>
